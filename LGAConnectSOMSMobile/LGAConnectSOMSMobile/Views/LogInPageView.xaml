@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LGAConnectSOMSMobile.Views.LogInPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        Margin="0,50,0,0"
+                        HeightRequest="300"
+                        MinimumHeightRequest="300"
+                        MinimumWidthRequest="100"
+                        Source="LGAConnectSOMSMobileLogo.png"
+                        WidthRequest="100" />
+
+                    <StackLayout Grid.Row="1">
+                        <Label
+                            Margin="30,0,25,0"
+                            FontFamily="MM"
+                            FontSize="18"
+                            Text="Teacher ID/Administrator ID"
+                            TextColor="{StaticResource White}" />
+
+                        <Frame Style="{StaticResource EntryFrame}">
+                            <Entry
+                                FontFamily="MM"
+                                FontSize="16"
+                                Placeholder="Teacher ID/Administrator ID" />
+                        </Frame>
+
+                        <Label
+                            Margin="30,10,25,0"
+                            FontFamily="MM"
+                            FontSize="18"
+                            Text="Password"
+                            TextColor="{StaticResource White}" />
+
+                        <Frame Style="{StaticResource EntryFrame}">
+                            <Entry
+                                FontFamily="MM"
+                                FontSize="16"
+                                IsPassword="True"
+                                Placeholder="***************" />
+                        </Frame>
+
+                        <Button
+                            Grid.Row="2"
+                            Margin="25,25,25,25"
+                            BackgroundColor="{StaticResource WitchHaze}"
+                            CornerRadius="10"
+                            FontFamily="MM"
+                            FontSize="14"
+                            Text="Sign in"
+                            TextColor="{StaticResource Black}" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

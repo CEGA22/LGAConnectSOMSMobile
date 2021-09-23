@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LGAConnectSOMSMobile.Views.HomePageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,15,10,0">
+                        <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
+                            <Label Style="{StaticResource TitleLabel}" Text="Good Day,&#10;User" />
+
+                            <ImageButton
+                                Aspect="AspectFill"
+                                BackgroundColor="{StaticResource DarkGray}"
+                                CornerRadius="5"
+                                HeightRequest="50"
+                                Source="DualTone2.jpg"
+                                WidthRequest="50" />
+                        </FlexLayout>
+                    </StackLayout>
+
+                    <Frame
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,10,10,5"
+                        Style="{StaticResource DashboardCard}">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <BoxView
+                                Grid.Row="0"
+                                BackgroundColor="{StaticResource WitchHaze}"
+                                HeightRequest="37"
+                                MinimumHeightRequest="37" />
+
+                            <Label
+                                Grid.Row="0"
+                                Margin="15,10,0,0"
+                                FontFamily="MM"
+                                FontSize="12"
+                                Text="Classes for Today"
+                                TextColor="{StaticResource Black}" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="10,10,10,5"
+                        Style="{StaticResource DashboardCard}">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <BoxView
+                                Grid.Row="0"
+                                BackgroundColor="{StaticResource WitchHaze}"
+                                HeightRequest="37"
+                                MinimumHeightRequest="37" />
+
+                            <Label
+                                Grid.Row="0"
+                                Margin="15,10,0,0"
+                                FontFamily="MM"
+                                FontSize="12"
+                                Text="Latest News &amp; Announcements"
+                                TextColor="{StaticResource Black}" />
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="0,10,15,0"
+                                FontFamily="MM"
+                                FontSize="10"
+                                HorizontalOptions="EndAndExpand"
+                                Text="View More"
+                                TextColor="{StaticResource DeepSkyBlue}" />
+                        </Grid>
+                    </Frame>
+
+                    <StackLayout
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,0,10,0">
+                        <FlexLayout AlignItems="Center" JustifyContent="SpaceAround">
+                            <Frame
+                                Margin="0,0,5,0"
+                                BackgroundColor="{StaticResource Pink}"
+                                Style="{StaticResource StudentsHandledCard}">
+                                <StackLayout>
+                                    <Label
+                                        FontFamily="MRegular"
+                                        FontSize="20"
+                                        Text="Your Students Handled"
+                                        TextColor="{StaticResource White}" />
+                                    <Label
+                                        Margin="0,30,0,0"
+                                        FontFamily="MRegular"
+                                        FontSize="50"
+                                        HorizontalOptions="End"
+                                        Text="10"
+                                        TextColor="{StaticResource White}" />
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame
+                                Margin="5,0,0,0"
+                                BackgroundColor="{StaticResource LightBlue}"
+                                Style="{StaticResource StudentsHandledCard}">
+                                <StackLayout>
+                                    <Label
+                                        FontFamily="MRegular"
+                                        FontSize="20"
+                                        Text="Your Sections Handled"
+                                        TextColor="{StaticResource White}" />
+                                    <Label
+                                        Margin="0,30,0,0"
+                                        FontFamily="MRegular"
+                                        FontSize="50"
+                                        HorizontalOptions="End"
+                                        Text="10"
+                                        TextColor="{StaticResource White}" />
+                                </StackLayout>
+                            </Frame>
+                        </FlexLayout>
+                    </StackLayout>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
