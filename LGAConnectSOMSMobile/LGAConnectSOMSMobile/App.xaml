@@ -6,6 +6,12 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            <!--  SvgIcons  -->
+            <OnPlatform x:Key="LGAConnectFont" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="LGAConnectFont" />
+                <On Platform="Android" Value="LGAConnectPortal.ttf#Regular" />
+            </OnPlatform>
+
             <!--  Colors  -->
             <Color x:Key="Black">#000000</Color>
             <Color x:Key="WitchHaze">#FFF68F</Color>
@@ -64,6 +70,19 @@
                 <Setter Property="Padding" Value="5" />
                 <Setter Property="Margin" Value="25,10,25,0" />
             </Style>
+
+            <Style x:Key="MenuFrame" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="HeightRequest" Value="32" />
+                <Setter Property="WidthRequest" Value="361" />
+                <Setter Property="MinimumWidthRequest" Value="361" />
+                <Setter Property="MinimumHeightRequest" Value="32" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

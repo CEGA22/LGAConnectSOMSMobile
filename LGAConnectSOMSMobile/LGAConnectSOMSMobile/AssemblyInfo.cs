@@ -1,3 +1,4 @@
+using Android.App;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,6 +22,7 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("Montserrat-SemiBoldItalic.ttf", Alias = "MSemiBoldItalic")]
 [assembly: ExportFont("Montserrat-Thin.ttf", Alias = "MThin")]
 [assembly: ExportFont("Montserrat-ThinItalic.ttf", Alias = "MThinItalic")]
+[assembly: Application(UsesCleartextTraffic = true)]
 
 
 

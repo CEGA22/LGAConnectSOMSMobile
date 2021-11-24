@@ -2,7 +2,13 @@
 <ContentPage
     x:Class="LGAConnectSOMSMobile.Views.HomePageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LGAConnectSOMSMobile.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:HomeViewModel />
+    </ContentPage.BindingContext>
+         
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
@@ -23,15 +29,14 @@
                         Grid.Column="0"
                         Margin="10,15,10,0">
                         <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
-                            <Label Style="{StaticResource TitleLabel}" Text="Good Day,&#10;User" />
+                            <Label x:Name="txtGreetings" Style="{StaticResource TitleLabel}" />
 
                             <ImageButton
                                 Aspect="AspectFill"
                                 BackgroundColor="{StaticResource DarkGray}"
                                 CornerRadius="5"
                                 HeightRequest="50"
-                                Source="DualTone2.jpg"
-                                WidthRequest="50" />
+                                WidthRequest="50" Command="{Binding _accountCommand}" />
                         </FlexLayout>
                     </StackLayout>
 

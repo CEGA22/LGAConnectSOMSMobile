@@ -2,7 +2,14 @@
 <ContentPage
     x:Class="LGAConnectSOMSMobile.Views.LogInPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LGAConnectSOMSMobile.ViewModels"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:LoginPageViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
@@ -16,7 +23,7 @@
 
                     <Image
                         Grid.Row="0"
-                        Margin="0,50,0,0"
+                        Margin="0,5,0,0"
                         HeightRequest="300"
                         MinimumHeightRequest="300"
                         MinimumWidthRequest="100"
@@ -25,17 +32,18 @@
 
                     <StackLayout Grid.Row="1">
                         <Label
-                            Margin="30,0,25,0"
+                            Margin="25,0,25,0"
                             FontFamily="MM"
                             FontSize="18"
-                            Text="Teacher ID/Administrator ID"
+                            Text="Teacher ID"
                             TextColor="{StaticResource White}" />
 
                         <Frame Style="{StaticResource EntryFrame}">
                             <Entry
                                 FontFamily="MM"
                                 FontSize="16"
-                                Placeholder="Teacher ID/Administrator ID" />
+                                Placeholder="Teacher ID"
+                                Text="{Binding Username}" />
                         </Frame>
 
                         <Label
@@ -50,13 +58,15 @@
                                 FontFamily="MM"
                                 FontSize="16"
                                 IsPassword="True"
-                                Placeholder="***************" />
+                                Placeholder="***************"
+                                Text="{Binding Password}" />
                         </Frame>
 
                         <Button
                             Grid.Row="2"
                             Margin="25,25,25,25"
                             BackgroundColor="{StaticResource WitchHaze}"
+                            Command="{Binding _HomePage}"
                             CornerRadius="10"
                             FontFamily="MM"
                             FontSize="14"
