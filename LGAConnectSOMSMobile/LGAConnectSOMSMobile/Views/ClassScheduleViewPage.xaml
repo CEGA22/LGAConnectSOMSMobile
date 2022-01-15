@@ -1,12 +1,168 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LGAConnectSOMSMobile.Views.ClassScheduleViewPage">
+<ContentPage
+    x:Class="LGAConnectSOMSMobile.Views.ClassScheduleViewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LGAConnectSOMSMobile.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:ClassScheduleViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Margin="15,15,0,0"
+                        Style="{StaticResource TitleLabel}"
+                        Text="Class&#10;Schedule" />
+
+
+                    <Frame
+                        Grid.Row="1"
+                        Margin="20,10,20,15"
+                        CornerRadius="10"
+                        HeightRequest="5">
+                        <StackLayout>
+                            <Label
+                                x:Name="selectedWeekDay"
+                                Margin="0,-5,0,0"
+                                FontFamily="MM"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                Text="Entire Week"
+                                TextColor="{StaticResource Black}" />
+                            <Picker
+                                x:Name="Weekdays"
+                                Title="Class Days"
+                                FontFamily="MM"
+                                IsVisible="false"
+                                SelectedIndexChanged="Weekdays_SelectedIndexChanged"
+                                SelectedItem="{Binding weekday}"
+                                TextColor="{StaticResource Black}">
+                                <Picker.Items>
+                                    <x:String>Monday</x:String>
+                                    <x:String>Tuesday</x:String>
+                                    <x:String>Wednesday</x:String>
+                                    <x:String>Thursday</x:String>
+                                    <x:String>Friday</x:String>
+                                    <x:String>Saturday</x:String>
+                                    <x:String>Sunday</x:String>
+                                    <x:String>Entire Week</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <ListView
+                        x:Name="classschedulelistview"
+                        Grid.Row="2"
+                        HasUnevenRows="True"
+                        IsPullToRefreshEnabled="True"
+                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                        ItemsSource="{Binding classschedule}"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        RefreshControlColor="{StaticResource DeepSkyBlue}"
+                        SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout
+                                        HorizontalOptions="Center"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center">
+
+                                        <StackLayout>
+                                            <Frame
+                                                Margin="25,0,25,10"
+                                                BackgroundColor="{Binding TileColor}"
+                                                CornerRadius="10"
+                                                HasShadow="True"
+                                                HeightRequest="80"
+                                                WidthRequest="300">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image
+                                                        Margin="0,0,15,0"
+                                                        Source="Subject.png"
+                                                        WidthRequest="40" />
+                                                    <StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Image
+                                                                Margin="0,-5,0,0"
+                                                                Source="Time.png"
+                                                                WidthRequest="15" />
+                                                            <Label
+                                                                Margin="0,-6,0,0"
+                                                                FontFamily="MBold"
+                                                                FontSize="14"
+                                                                LineBreakMode="WordWrap"
+                                                                Text="{Binding Time}"
+                                                                TextColor="{StaticResource White}" />
+                                                        </StackLayout>
+
+                                                        <Label
+                                                            FontFamily="MB"
+                                                            FontSize="16"
+                                                            LineBreakMode="WordWrap"
+                                                            Text="{Binding Subject}"
+                                                            TextColor="{StaticResource White}" />
+
+                                                        <Label
+                                                            FontFamily="MM"
+                                                            FontSize="12"
+                                                            LineBreakMode="WordWrap"
+                                                            Text="{Binding Fullname}"
+                                                            TextColor="{StaticResource White}" />
+
+
+
+                                                        <Label
+                                                            x:Name="lblWeekday"
+                                                            FontFamily="MM"
+                                                            FontSize="14"
+                                                            HorizontalOptions="Start"
+                                                            IsVisible="true"
+                                                            LineBreakMode="WordWrap"
+                                                            Text="{Binding WeekDay}"
+                                                            TextColor="{StaticResource White}"
+                                                            VerticalOptions="Center" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout
+                        x:Name="lblNoRecords"
+                        Grid.Row="2"
+                        Margin="0,150,0,0"
+                        HorizontalOptions="Center"
+                        IsVisible="False"
+                        VerticalOptions="Start">
+                        <Image Source="FreeSchedule.png" WidthRequest="50" />
+                        <Label
+                            FontFamily="MM"
+                            FontSize="14"
+                            Text="No Schedule For Today"
+                            TextColor="{StaticResource White}" />
+                    </StackLayout>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

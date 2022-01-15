@@ -11,17 +11,18 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
+        <Grid>
+            <ScrollView>
+                <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
 
-                    <Image
+                        <Image
                         Grid.Row="0"
                         Margin="0,5,0,0"
                         HeightRequest="300"
@@ -30,51 +31,59 @@
                         Source="LGAConnectSOMSMobileLogo.png"
                         WidthRequest="100" />
 
-                    <StackLayout Grid.Row="1">
-                        <Label
+                        <StackLayout Grid.Row="1">
+                            <Label
                             Margin="25,0,25,0"
                             FontFamily="MM"
                             FontSize="18"
                             Text="Teacher ID"
                             TextColor="{StaticResource White}" />
 
-                        <Frame Style="{StaticResource EntryFrame}">
-                            <Entry
+                            <Frame Style="{StaticResource EntryFrame}">
+                                <Entry
                                 FontFamily="MM"
                                 FontSize="16"
                                 Placeholder="Teacher ID"
                                 Text="{Binding Username}" />
-                        </Frame>
+                            </Frame>
 
-                        <Label
+                            <Label
                             Margin="30,10,25,0"
                             FontFamily="MM"
                             FontSize="18"
                             Text="Password"
                             TextColor="{StaticResource White}" />
 
-                        <Frame Style="{StaticResource EntryFrame}">
-                            <Entry
+                            <Frame Style="{StaticResource EntryFrame}">
+                                <Entry
                                 FontFamily="MM"
                                 FontSize="16"
                                 IsPassword="True"
                                 Placeholder="***************"
                                 Text="{Binding Password}" />
-                        </Frame>
+                            </Frame>
 
-                        <Button
+                            <Button
                             Grid.Row="2"
                             Margin="25,25,25,25"
                             BackgroundColor="{StaticResource WitchHaze}"
-                            Command="{Binding _HomePage}"
+                            Command="{Binding HomePageCommand}"
                             CornerRadius="10"
                             FontFamily="MM"
                             FontSize="14"
                             Text="Sign in"
                             TextColor="{StaticResource Black}" />
-                    </StackLayout>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+            <ActivityIndicator
+                x:Name="activity"
+                IsRunning="{Binding IsBusy, Mode=OneWay}"
+                IsVisible="{Binding IsBusy, Mode=OneWay}"
+                Scale="0.1"
+                Color="Black" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

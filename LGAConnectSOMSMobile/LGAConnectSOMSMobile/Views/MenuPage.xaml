@@ -78,10 +78,12 @@
                             Text="About"
                             TextColor="{StaticResource Black}" />
                     </StackLayout>
-
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding _About}" />
+                    </Frame.GestureRecognizers>
                 </Frame>
 
-                <Frame
+                <!--<Frame
                     Grid.Row="4"
                     Grid.Column="0"
                     Margin="15,15,15,0"
@@ -99,7 +101,7 @@
                             Text="File Request"
                             TextColor="{StaticResource Black}" />
                     </StackLayout>
-                </Frame>
+                </Frame>-->
 
                 <Frame
                     Grid.Row="5"

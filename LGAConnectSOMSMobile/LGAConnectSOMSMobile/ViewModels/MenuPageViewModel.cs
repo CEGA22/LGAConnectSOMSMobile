@@ -16,14 +16,20 @@ namespace LGAConnectSOMSMobile.ViewModels
 
         }
 
-
         public ICommand _accountSettings => new Command(async () => await GotoAccountSettings());
+        public ICommand _About => new Command(async () => await GoToAbout());
         public ICommand _logout => new Command(async () => await LogoutAccount());
+
 
         async Task GotoAccountSettings()
         {
-            //await Application.Current.MainPage.Navigation.PushAsync(new AccountSettingsPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new AccountSettingsPage());
 
+        }
+
+        async Task GoToAbout()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AboutPageView());
         }
 
         async Task LogoutAccount()

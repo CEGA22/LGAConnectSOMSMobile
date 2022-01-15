@@ -19,5 +19,9 @@ namespace LGAConnectSOMSMobile.Models
         public int IsAdmin { get; set; }
 
         public int IsFaculty { get; set; }
+
+        public byte[] TeacherProfile { get; set; }
+
+        public string Password { get; set; }
     }
 }

@@ -3,7 +3,8 @@
     x:Class="LGAConnectSOMSMobile.Views.HomePageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:LGAConnectSOMSMobile.ViewModels">
+    xmlns:local="clr-namespace:LGAConnectSOMSMobile.ViewModels"
+    >
 
     <ContentPage.BindingContext>
         <local:HomeViewModel />
@@ -30,13 +31,13 @@
                         Margin="10,15,10,0">
                         <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
                             <Label x:Name="txtGreetings" Style="{StaticResource TitleLabel}" />
-
                             <ImageButton
+                                x:Name="btnTeacherProfile"
                                 Aspect="AspectFill"
                                 BackgroundColor="{StaticResource DarkGray}"
                                 CornerRadius="5"
                                 HeightRequest="50"
-                                WidthRequest="50" Command="{Binding _accountCommand}" />
+                                WidthRequest="50" Command="{Binding AccounCommand}" />
                         </FlexLayout>
                     </StackLayout>
 
@@ -58,51 +59,211 @@
                                 HeightRequest="37"
                                 MinimumHeightRequest="37" />
 
-                            <Label
-                                Grid.Row="0"
-                                Margin="15,10,0,0"
-                                FontFamily="MM"
-                                FontSize="12"
-                                Text="Classes for Today"
-                                TextColor="{StaticResource Black}" />
+                            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                                <Label
+                                    Margin="15,10,0,0"
+                                    FontFamily="MM"
+                                    FontSize="12"
+                                    Text="Classes for Today |"
+                                    TextColor="{StaticResource Black}" />
+
+                                <Label
+                                    x:Name="TodayClasses"
+                                    Margin="0,10,0,0"
+                                    FontFamily="MM"
+                                    FontSize="12"
+                                    Text=""
+                                    TextColor="{StaticResource Black}" />
+                            </StackLayout>
+
+                            <StackLayout
+                                Grid.Row="1"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <ListView
+                                    x:Name="classschedulelistview"
+                                    HasUnevenRows="True"
+                                    ItemsSource="{Binding classschedule}"
+                                    SeparatorVisibility="None">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout
+                                                    HorizontalOptions="Center"
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="Center">
+
+                                                    <StackLayout>
+                                                        <Frame
+                                                            Margin="25,0,25,10"
+                                                            BackgroundColor="{Binding TileColor}"
+                                                            CornerRadius="10"
+                                                            HasShadow="True"
+                                                            HeightRequest="80"
+                                                            WidthRequest="300">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Image
+                                                                    Margin="0,0,15,0"
+                                                                    Source="Subject.png"
+                                                                    WidthRequest="40" />
+                                                                <StackLayout>
+                                                                    <StackLayout Orientation="Horizontal">
+                                                                        <Image
+                                                                            Margin="0,-5,0,0"
+                                                                            Source="Time.png"
+                                                                            WidthRequest="15" />
+                                                                        <Label
+                                                                            Margin="0,-6,0,0"
+                                                                            FontFamily="MBold"
+                                                                            FontSize="14"
+                                                                            LineBreakMode="WordWrap"
+                                                                            Text="{Binding Time}"
+                                                                            TextColor="{StaticResource White}" />
+                                                                    </StackLayout>
+
+                                                                    <Label
+                                                                        FontFamily="MB"
+                                                                        FontSize="16"
+                                                                        LineBreakMode="WordWrap"
+                                                                        Text="{Binding Subject}"
+                                                                        TextColor="{StaticResource White}" />
+
+                                                                    <Label
+                                                                        FontFamily="MM"
+                                                                        FontSize="12"
+                                                                        LineBreakMode="WordWrap"
+                                                                        Text="{Binding Fullname}"
+                                                                        TextColor="{StaticResource White}" />
+
+                                                                    <Label
+                                                                        x:Name="lblWeekday"
+                                                                        FontFamily="MM"
+                                                                        FontSize="14"
+                                                                        HorizontalOptions="Start"
+                                                                        IsVisible="true"
+                                                                        LineBreakMode="WordWrap"
+                                                                        Text="{Binding WeekDay}"
+                                                                        TextColor="{StaticResource White}"
+                                                                        VerticalOptions="Center" />
+                                                                </StackLayout>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+
+                            <StackLayout
+                                x:Name="lblNoRecords"
+                                Grid.Row="1"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="False"
+                                VerticalOptions="CenterAndExpand">
+                                <Image Source="FreeSchedule.png" WidthRequest="40" />
+                                <Label
+                                    FontFamily="MM"
+                                    FontSize="12"
+                                    Text="No Schedule For Today"
+                                    TextColor="{StaticResource Black}" />
+                            </StackLayout>
                         </Grid>
                     </Frame>
 
                     <Frame
                         Grid.Row="2"
                         Grid.Column="0"
-                        Margin="10,10,10,5"
+                        Margin="10,5,10,5"
                         Style="{StaticResource DashboardCard}">
-
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
 
-                            <BoxView
-                                Grid.Row="0"
-                                BackgroundColor="{StaticResource WitchHaze}"
-                                HeightRequest="37"
-                                MinimumHeightRequest="37" />
+                                    <BoxView
+                                        Grid.Row="0"
+                                        BackgroundColor="{StaticResource WitchHaze}"
+                                        HeightRequest="37" />
 
-                            <Label
-                                Grid.Row="0"
-                                Margin="15,10,0,0"
-                                FontFamily="MM"
-                                FontSize="12"
-                                Text="Latest News &amp; Announcements"
-                                TextColor="{StaticResource Black}" />
 
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Margin="0,10,15,0"
-                                FontFamily="MM"
-                                FontSize="10"
-                                HorizontalOptions="EndAndExpand"
-                                Text="View More"
-                                TextColor="{StaticResource DeepSkyBlue}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Margin="15,10,0,0"
+                                        FontFamily="MM"
+                                        FontSize="12"
+                                        Text="Latest News &amp; Announcements"
+                                        TextColor="{StaticResource Black}" />
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="0,10,15,0"
+                                        FontFamily="MM"
+                                        FontSize="10"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="View More"
+                                        TextColor="{StaticResource DeepSkyBlue}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NewsCommand}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                                <ListView
+                                    Margin="0,0,0,0"
+                                    HasUnevenRows="True"
+                                    ItemsSource="{Binding newsAndAnnouncements}"
+                                    SelectionMode="None">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout>
+                                                    <Frame
+                                                        Margin="25,0,25,0"
+                                                        Padding="0"
+                                                        CornerRadius="10"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsClippedToBounds="True"
+                                                        VerticalOptions="FillAndExpand">
+                                                        <Image
+                                                            Aspect="AspectFill"
+                                                            HeightRequest="100"
+                                                            Source="{Binding Thumbnail}" />
+                                                    </Frame>
+
+                                                    <StackLayout Margin="15,0,15,10">
+                                                        <Label
+                                                            Margin="15,0,15,0"
+                                                            FontFamily="MSemiBold"
+                                                            FontSize="14"
+                                                            Text="{Binding Title}"
+                                                            TextColor="{StaticResource Black}" />
+                                                        <Label
+                                                            Margin="15,0,15,0"
+                                                            FontFamily="MM"
+                                                            FontSize="12"
+                                                            LineBreakMode="TailTruncation"
+                                                            Text="{Binding Content}"
+                                                            TextColor="{StaticResource Black}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                            </StackLayout>
+                            <ActivityIndicator
+                                x:Name="activity"
+                                IsRunning="{Binding IsBusy, Mode=OneWay}"
+                                IsVisible="{Binding IsBusy, Mode=OneWay}"
+                                Scale="0.1"
+                                Color="Black" />
+
                         </Grid>
                     </Frame>
 
@@ -110,30 +271,9 @@
                         Grid.Row="3"
                         Grid.Column="0"
                         Margin="10,0,10,0">
-                        <FlexLayout AlignItems="Center" JustifyContent="SpaceAround">
-                            <Frame
-                                Margin="0,0,5,0"
+                        <Frame
+                                Margin="0,10,5,0"
                                 BackgroundColor="{StaticResource Pink}"
-                                Style="{StaticResource StudentsHandledCard}">
-                                <StackLayout>
-                                    <Label
-                                        FontFamily="MRegular"
-                                        FontSize="20"
-                                        Text="Your Students Handled"
-                                        TextColor="{StaticResource White}" />
-                                    <Label
-                                        Margin="0,30,0,0"
-                                        FontFamily="MRegular"
-                                        FontSize="50"
-                                        HorizontalOptions="End"
-                                        Text="10"
-                                        TextColor="{StaticResource White}" />
-                                </StackLayout>
-                            </Frame>
-
-                            <Frame
-                                Margin="5,0,0,0"
-                                BackgroundColor="{StaticResource LightBlue}"
                                 Style="{StaticResource StudentsHandledCard}">
                                 <StackLayout>
                                     <Label
@@ -141,16 +281,15 @@
                                         FontSize="20"
                                         Text="Your Sections Handled"
                                         TextColor="{StaticResource White}" />
-                                    <Label
-                                        Margin="0,30,0,0"
+                                    <Label x:Name="SectionsCount"
+                                        Margin="0,15,0,0"
                                         FontFamily="MRegular"
                                         FontSize="50"
                                         HorizontalOptions="End"
-                                        Text="10"
+                                        Text=""
                                         TextColor="{StaticResource White}" />
                                 </StackLayout>
                             </Frame>
-                        </FlexLayout>
                     </StackLayout>
 
                 </Grid>

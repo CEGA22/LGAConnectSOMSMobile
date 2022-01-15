@@ -13,6 +13,6 @@
     <TabbedPage.Children>
         <pages:HomePageView Title="Home" IconImageSource="Home.png" />
         <pages:ClassScheduleViewPage Title="Class Schedule" IconImageSource="ClassSchedule.png" />
-        <pages:ClassRecordViewPage Title="Class Record" IconImageSource="ClassRecords.png" />
+        <!--<pages:ClassRecordViewPage Title="Class Record" IconImageSource="ClassRecords.png" />-->
     </TabbedPage.Children>
 </TabbedPage>

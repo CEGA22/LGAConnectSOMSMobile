@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LGAConnectSOMSMobile.Views.AccountSettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LGAConnectSOMSMobile.ViewModels"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <local:AccountSettingsViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource MainBackgroundTheme}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Margin="15,15,0,0"
+                        FontFamily="MM"
+                        FontSize="24"
+                        Text="Account&#10;Settings"
+                        TextColor="{StaticResource White}" />
+
+                    <ImageButton
+                        x:Name="btnStudentProfile"
+                        Grid.Row="1"
+                        Margin="0,35,0,0"
+                        Aspect="AspectFill"
+                        BackgroundColor="{StaticResource DarkGray}"
+                        CornerRadius="20"
+                        HeightRequest="136"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="136" />
+
+                    <Label
+                        x:Name="StudentName"
+                        Grid.Row="2"
+                        Margin="15,5,0,0"
+                        FontFamily="MM"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Student name"
+                        TextColor="{StaticResource Black}" />
+
+                    <StackLayout Grid.Row="3">
+                        <Label
+                            x:Name="GradeLevel"
+                            Margin="15,5,0,0"
+                            FontFamily="MM"
+                            FontSize="18"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text=""
+                            TextColor="{StaticResource Black}" />
+
+                        <Label
+                            x:Name="Section"
+                            Margin="15,0,0,0"
+                            FontFamily="MM"
+                            FontSize="18"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text=""
+                            TextColor="{StaticResource Black}" />
+                    </StackLayout>
+
+                    <Label
+                        Grid.Row="4"
+                        Margin="25,25,0,0"
+                        FontFamily="MM"
+                        FontSize="18"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Change Password"
+                        TextColor="{StaticResource Black}" />
+
+                    <BoxView
+                        Grid.Row="5"
+                        Margin="15,15,15,0"
+                        BackgroundColor="{StaticResource WitchHaze}"
+                        CornerRadius="20"
+                        HeightRequest="5"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="361" />
+
+                    <StackLayout Grid.Row="6">
+                        <Label
+                            Margin="25,10,0,0"
+                            FontFamily="MM"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Current Password"
+                            TextColor="{StaticResource Black}" />
+
+                        <Frame Style="{StaticResource EntryFrame}">
+                            <Entry
+                                FontFamily="MM"
+                                FontSize="16"
+                                IsPassword="True"
+                                Placeholder="**********"
+                                Text="{Binding CurrentPassword}"
+                                TextColor="{StaticResource Black}" />
+                        </Frame>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="7">
+                        <Label
+                            Margin="25,10,0,0"
+                            FontFamily="MM"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            Text="New Password"
+                            TextColor="{StaticResource Black}" />
+
+                        <Frame Style="{StaticResource EntryFrame}">
+                            <Entry
+                                FontFamily="MM"
+                                FontSize="16"
+                                IsPassword="True"
+                                Placeholder="**********"
+                                Text="{Binding NewPassword}"
+                                TextColor="{StaticResource Black}" />
+                        </Frame>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="8">
+                        <Label
+                            Margin="25,10,0,0"
+                            FontFamily="MM"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Re-type new Password"
+                            TextColor="{StaticResource Black}" />
+
+                        <Frame Style="{StaticResource EntryFrame}">
+                            <Entry
+                                FontFamily="MM"
+                                FontSize="16"
+                                IsPassword="True"
+                                Placeholder="**********"
+                                Text="{Binding RetypeNewPassword}"
+                                TextColor="{StaticResource Black}" />
+                        </Frame>
+                    </StackLayout>
+
+                    <Button
+                        Grid.Row="9"
+                        Margin="25,10,25,25"
+                        BackgroundColor="{StaticResource WitchHaze}"
+                        Command="{Binding UpdatePasswordCommand}"
+                        CornerRadius="10"
+                        FontFamily="MM"
+                        FontSize="14"
+                        Text="Update Password"
+                        TextColor="{StaticResource Black}" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

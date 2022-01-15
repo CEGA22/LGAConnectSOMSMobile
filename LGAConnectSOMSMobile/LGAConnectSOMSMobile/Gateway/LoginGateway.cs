@@ -9,7 +9,7 @@ namespace LGAConnectSOMSMobile.Gateway
 {
     public class LoginGateway
     {
-        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/account/login";
+        static string BaseUrl = "http://cega07-001-site1.gtempurl.com/api/lga/account/login";
 
 
         public async Task<string> AccountLogin(LoginRequest request)
