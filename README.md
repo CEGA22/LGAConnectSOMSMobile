@@ -1,3 +1,3 @@
-# LGAConnectSOMSMobile
-LGA Connect Portal Capstone Project
-LGA CONNECT | LADDER OF GEMS ACADEMY SCHOOL OPERATIONS MANAGEMENT SYSTEM WITH STUDENT PORTAL APPLICATION  A Capstone Project Proposal  Presented to the Faculty of the  Information and Communications Technology Program STI College Ortigas-Cainta   Binasoy, Andrei M. Gabrang, Ceejay A.  Geneblazo, Fatima Fate M. Sierra, Patricia Keih N.
+# LGA Connect School Operations Management System Mobile
+LGA Connect school Operations Management System Mobile version allows the school to view school announcements, view teacher's sections handled, view their day-to-day 
+class schedule all in one place.
